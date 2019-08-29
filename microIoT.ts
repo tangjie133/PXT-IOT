@@ -199,26 +199,26 @@ namespace microIoT {
         let buf = pins.createBuffer(3);
         if (index == 0) {
             buf[0] = 0x00;
-            if(direction == 0x00){
+            if (direction == 0x00) {
                 buf[1] = 0x01;
-             }else{
+            } else {
                 buf[1] = 0x00;
-             }
-        }else if (index == 1) {
+            }
+        } else if (index == 1) {
             buf[0] = 0x02;
             buf[1] = direction;
-        } else if (index == 2){
+        } else if (index == 2) {
             buf[0] = 0x00;
-            if(direction == 0x00){
+            if (direction == 0x00) {
                 buf[1] = 0x01;
-            }else{
+            } else {
                 buf[1] = 0x00;
             }
             buf[2] = speed;
             pins.i2cWriteBuffer(IIC_ADDRESS, buf);
             buf[0] = 0x02;
             buf[1] = direction;
-        }else{
+        } else {
         }
         buf[2] = speed;
         pins.i2cWriteBuffer(IIC_ADDRESS, buf);
@@ -230,9 +230,9 @@ namespace microIoT {
         let buf = pins.createBuffer(3);
         if (motors == 0) {
             buf[0] = 0x00;
-        }else if (motors == 1) {
+        } else if (motors == 1) {
             buf[0] = 0x02;
-        } else if (motors == 2){
+        } else if (motors == 2) {
             buf[0] = 0x00;
             buf[1] = 0;
             buf[2] = 0;
@@ -377,13 +377,13 @@ namespace microIoT {
     //% top.fieldEditor="gridpicker" top.fieldOptions.columns=2
     //% advanced=true
     export function microIoT_add_topic(top: TOPIC, IOT_TOPIC: string): void {
-        microIoT_ParaRunCommand((top+0x06), IOT_TOPIC);
+        microIoT_ParaRunCommand((top + 0x06), IOT_TOPIC);
         /*
         while (microIoT_readStatus(READ_SUBSTATUS) != SUB_TOPIC_OK) {
             basic.pause(200)
         }*/
         microIoT_CheckStatus("SubTopicOK");
-        
+
     }
     /**
      * @param Mess to Mess ,eg: "mess"
@@ -474,21 +474,21 @@ namespace microIoT {
         Wifi_Status = WIFI_CONNECTED
     }
 
-    function microIoT_http_wait_request(time: number) :string{
-        if(time < 100){
+    function microIoT_http_wait_request(time: number): string {
+        if (time < 100) {
             time = 100
         }
         let timwout = time / 100
         let _timeout = 0
-        while(true){
+        while (true) {
             basic.pause(100)
-            if (microIoTStatus == "HTTP_REQUEST"){
+            if (microIoTStatus == "HTTP_REQUEST") {
                 return RECDATA
-            } else if (microIoTStatus == "HTTP_REQUESTFailed"){
+            } else if (microIoTStatus == "HTTP_REQUESTFailed") {
                 return "requestFailed"
             }
             _timeout += 1
-            if (_timeout > timwout){
+            if (_timeout > timwout) {
                 return "timeOut"
             }
         }
@@ -734,12 +734,11 @@ namespace microIoT {
 
 
 
-        /**
-     * OLED
-     */
+    /**
+ * OLED
+ */
     let i = 1;
     let j = 1;
-    initDisplay();
     export function initDisplay(): void {
         cmd(0xAE);  // Set display OFF
         cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
@@ -764,6 +763,7 @@ namespace microIoT {
         cmd(0xA4);  // Set all pixels OFF
         cmd(0xA6);  // Set display not inverted
         cmd(0xAF);  // Set display On
+        clear();
     }
     //% weight=90
     //% block="clear"
@@ -804,11 +804,13 @@ namespace microIoT {
     //% text.defl="DFRobot"
     //% block="OLED show line %line|text %text"
     export function showUserText(line: number, text: string) {
+        
         if (i == 1) {
-            clear();
+            initDisplay();
             i += 1;
         }
         setTextXY(line);
+
         for (let c of text) {
             putChar(c);
         }
@@ -822,10 +824,12 @@ namespace microIoT {
     //% weight=90
     //% block="OLED show line %line|number %n"
     export function showUserNumber(line: number, n: number) {
-        if (j == 1) {
-            clear();
+        
+        if (j == 1&&i==1) {
+            initDisplay();
             j += 1;
         }
+        
         microIoT.showUserText(line, "" + n)
     }
 
@@ -986,9 +990,9 @@ namespace microIoT {
     //% icon="\uf1ec" 
     //% shim=OLED::drawLine
     //% subcategory="OLED"
-    export function drawUserLine(x1: number, y1: number, x2: number, y2: number):void{
+    export function drawUserLine(x1: number, y1: number, x2: number, y2: number): void {
         return;
     }
-    
+
 
 } 
