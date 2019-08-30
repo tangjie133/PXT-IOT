@@ -1,4 +1,4 @@
-{{
+{
     "microIoT.aMotors.M1|block": "M1",
     "microIoT.aMotors.M2|block": "M2",
     "microIoT.aMotors.ALL|block": "全部",
@@ -27,5 +27,5 @@
     "microIoT.showUserText|block": "OLED 显示屏 第%line行|显示文本%text",
     "microIoT.clear|block": "OLED清屏",
     "microIoT.drawUserLine|block": "OLED画线起点 x1:%x1|y1:%y1| 终点x2:%x2|y2:%y2"
-}
+
 }
