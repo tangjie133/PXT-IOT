@@ -16,7 +16,6 @@
     "microIoT.microIoT_WIFI|block": "WIFI 配置 | Wi-Fi:| 名称: %SSID| 密码:%PASSWORD| 启动连接",
     "microIoT.microIoT_http_IFTTT|block": "IFTTT设置| even: %EVENT| key:%KEY| ",
     "microIoT.microIoT_http_get|block": "http(get) | url %url| 超时(毫秒) %time",
-    " microIoT.microIoT_http_post|block": "http(post) | url %url| content %content| 超时(毫秒) %time",
     "microIoT.microIoT_http_put|block": "http(put) | url %url| content %content| 超时(毫秒) %time",
     "microIoT.microIoT_send_ping|block": "发送PING",
     "microIoT.microIoT_get_version|block": "版本号",
