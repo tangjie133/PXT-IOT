@@ -10,11 +10,11 @@
     "files": [
         "README.md",
         "microIoT.ts",
-        
         "_locales/zh-cn/microIoT-strings.json",
         "_locales/zh-tw/microIoT-strings.json"
     ],
     "testFiles": [],
     "public": true,
-    "installedVersion": "workspace:ec3099df-1b6d-4235-8081-522b7681de40"
+    "installedVersion": "workspace:2db0bc0f-9db5-410b-f4cf-1c3c3b2d234f",
+    "preferredEditor": "tsprj"
 }
